@@ -1,7 +1,7 @@
 import math
 import datetime
 
-class Calculator:
+class Calculator1:
     def __init__(self):
         self.history = []
 
@@ -47,7 +47,7 @@ class Calculator:
             print(f"[{entry['time']}] {entry['operation']}({entry['a']}, {entry['b']}) = {entry['result']}")
 
 def main():
-    calc = Calculator()
+    calc = Calculator1()
     while True:
         print("\nAvailable operations: add, subtract, multiply, divide, power, sqrt, history, quit")
         cmd = input("Enter operation: ").strip().lower()
@@ -63,7 +63,7 @@ def main():
             a = float(input("Enter first number: "))
             b = float(input("Enter second number: "))
             func = getattr(calc, cmd)
-            print("Result:", func(a, b))
+            print("Your Result:", func(a, b))
         else:
             print("Unknown command!")
 
