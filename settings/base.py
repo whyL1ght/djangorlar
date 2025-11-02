@@ -30,6 +30,7 @@ DJANGO_AND_THIRDPARTY_APPS = [
 PROJECT_APPS = [
     "abstracts",
     "tasks",
+    "users",
 ]
 
 INSTALLED_APPS = DJANGO_AND_THIRDPARTY_APPS + PROJECT_APPS
@@ -78,6 +79,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = "users.CustomUser2"
 
 
 # ----------------------------------------------
