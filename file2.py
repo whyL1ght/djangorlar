@@ -24,7 +24,7 @@ class WeatherSimulator:
             Weather("Tokyo"),
             Weather("Berlin"),
             Weather("Moscow"),
-            Weather("Almaty"),
+            Weather("Semey"),
         ]
         self.time_step = 0
 
