@@ -9,5 +9,5 @@ ENV_POSSIBLE_OPTIONS = (
     'prod',
 )
 
-ENV_ID = config("PRACTICE-5_ENV_ID", cast=str)
+ENV_ID = config("PRACTICE-7_ENV_ID", cast=str)
 SECRET_KEY = 'django-insecure--$ypsv^a=lojc6#mm%h5&y&f&9fi0shqynxu&rf*aerf3y$58v'

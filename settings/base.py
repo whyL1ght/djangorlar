@@ -80,7 +80,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = "users.CustomUser2"
+AUTH_USER_MODEL = "users.CustomUser"
 
 
 # ----------------------------------------------

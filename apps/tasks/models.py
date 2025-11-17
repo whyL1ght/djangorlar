@@ -4,7 +4,7 @@ from typing import Any
 # Django modules
 from django.utils import timezone
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 # Project modules
 from apps.abstracts.models import AbstractSoftDeletableModel
@@ -19,8 +19,8 @@ class Project(AbstractSoftDeletableModel):
 
     name = models.CharField(max_length=name_max_len)
     description = models.TextField(blank=True)
-    is_author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="owned_projects")
-    users = models.ManyToManyField(to=User, blank=True, related_name="joined_project")
+    is_author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="owned_projects")
+    users = models.ManyToManyField(to=settings.AUTH_USER_MODEL, blank=True, related_name="joined_project")
 
     def __str__(self):
         return self.name
@@ -43,7 +43,7 @@ class Tasks(AbstractSoftDeletableModel):
     project = models.ForeignKey(Project, on_delete=models.CASCADE,)
     status = models.TextField(choices=STATUS_CHOICES)
     assignees = models.ManyToManyField(
-        to=User, 
+        to=settings.AUTH_USER_MODEL, 
         through="UserTasks",
         through_fields=("task", "user"),
         blank=True
@@ -58,7 +58,7 @@ class UserTasks(AbstractSoftDeletableModel):
     Represent users task in db model
     """
     task = models.ForeignKey(Tasks, on_delete=models.CASCADE, related_name="user_task")
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     class Meta:
         constraints = [
