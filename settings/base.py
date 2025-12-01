@@ -9,7 +9,6 @@ from settings.conf import * # noqa: F403
 # Path
 #
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 ROOT_URLCONF = 'settings.urls'
 WSGI_APPLICATION = 'settings.wsgi.application'
 ASGI_APPLICATION = 'settings.asgi.application'
@@ -25,12 +24,16 @@ DJANGO_AND_THIRDPARTY_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "rest_framework",
+    "rest_framework_simplejwt",
+
 ]
 
 PROJECT_APPS = [
-    "abstracts",
-    "tasks",
-    "users",
+    "apps.abstracts",
+    "apps.tasks",
+    "apps.users",
+    "apps.courses",
 ]
 
 INSTALLED_APPS = DJANGO_AND_THIRDPARTY_APPS + PROJECT_APPS

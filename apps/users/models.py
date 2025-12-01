@@ -60,14 +60,6 @@ class CustomUserManager(BaseUserManager):
         return new_user
 
 
-FIRST_NAME_LENGHT = 100
-LAST_NAME_LENGHT = 100
-USER_NAME_LENGHT = 200
-PHONE_NUMBER_LENGHT = 20
-CITY_NAME_LENGHT = 100
-COUNTRY_NAME_LENGHT = 100
-DEPARTMENTS_NAME_LENGHT = 50
-ROLE_NAME_LENGHT = 20
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     """
@@ -78,6 +70,16 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         ("manager", "Manager"),
         ("employee", "Employee"),
     )
+
+    FIRST_NAME_LENGHT = 100
+    LAST_NAME_LENGHT = 100
+    USER_NAME_LENGHT = 200
+    PHONE_NUMBER_LENGHT = 20
+    CITY_NAME_LENGHT = 100
+    COUNTRY_NAME_LENGHT = 100
+    DEPARTMENTS_NAME_LENGHT = 50
+    ROLE_NAME_LENGHT = 20
+
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=200, unique=True)
     first_name = models.CharField(max_length=FIRST_NAME_LENGHT)
@@ -96,6 +98,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["username"]
+    objects = CustomUserManager()
 
     def __str__(self):
         return self.email
